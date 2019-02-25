@@ -7,7 +7,7 @@ import java.util.Objects;
 public class MpkNode implements Comparable<MpkNode>, Serializable {
     LineName lineName;
     NodeName nodeName;
-    int time;
+    public int time;
     boolean isFirstStop;
 
     public MpkNode(LineName lineName, NodeName nodeName, int time, boolean isFirstStop) {
