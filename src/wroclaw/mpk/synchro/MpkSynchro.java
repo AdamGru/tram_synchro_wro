@@ -795,7 +795,7 @@ public class MpkSynchro {
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
-//
+
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 6, 7
 
         System.out.println("warunek 23");
