@@ -1,5 +1,6 @@
 package wroclaw.mpk.synchro;
 
+import wroclaw.mpk.synchro.mixer.NarzucenieStartu;
 import wroclaw.mpk.synchro.mixer.TrzyLinieJednaOdchylka;
 
 import java.io.*;
@@ -138,7 +139,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 3");
 
-        step = narzucenieStartu(lesnica10, NodeName.BISKUPIN, 10);
+        step = NarzucenieStartu.execute(lesnica10, NodeName.BISKUPIN, 10);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -2045,23 +2046,6 @@ public class MpkSynchro {
             if (k % 10000 == 0) {
                 System.out.println("iteracja nonEX: " + k);
 
-            }
-        }
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - narzucenie startu
-
-    static List<LineVariant> narzucenieStartu(List<LineVariant> lines, NodeName node, int time) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findFirstNodes(node);
-
-            if (foundnodes.get(0).time == time) {
-                goodLineVariants.add(currentLineVariant);
             }
         }
         return goodLineVariants;
