@@ -115,7 +115,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 1");
 
-        List<LineVariant> step = czteryLinieJednaOdchylkaWymuszona(mix4ListLineVariant(poswietne1, krzyki2, oporow4, lesnica10), NodeName.BISKUPIN);
+        List<LineVariant> step = CzteryLinieJednaOdchylkaWymuszona.execute(mix4ListLineVariant(poswietne1, krzyki2, oporow4, lesnica10), NodeName.BISKUPIN);
         List<LineVariant> mix = nonexclusiveLineVariant(step);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
@@ -214,7 +214,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 10");
 
-        step = czteryLinieBezOdchylek(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, oporow4), useOnlyAvaliableLineVariants(availableLineVariants, oporow5), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11), useOnlyAvaliableLineVariants(availableLineVariants, fat24)), NodeName.LEGIONOW);
+        step = CzteryLinieBezOdchylek.execute(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, oporow4), useOnlyAvaliableLineVariants(availableLineVariants, oporow5), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11), useOnlyAvaliableLineVariants(availableLineVariants, fat24)), NodeName.LEGIONOW);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -718,7 +718,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 56");
 
-        step = czteryLinieJednaOdchylkaWymuszona(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW);
+        step = CzteryLinieJednaOdchylkaWymuszona.execute(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1118,7 +1118,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 93");
 
-        step = czteryLinieJednaOdchylkaWymuszona(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin1), useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.BISKUPIN);
+        step = CzteryLinieJednaOdchylkaWymuszona.execute(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin1), useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.BISKUPIN);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -2076,343 +2076,16 @@ public class MpkSynchro {
 
 
 
-    // metoda sprawdzająca warunki - cztery linie bez odchyłek
 
-    static List<LineVariant> czteryLinieBezOdchylek(List<LineVariant> lines, NodeName node) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
 
-        switch (Period.TAKT) {
 
-            case 12:
 
-                byte min = 3;
-                byte max = 3;
 
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
 
-                    Collections.sort(foundnodes);
 
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
 
-            case 15:
-                min = 3;
-                max = 4;
 
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
 
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 20:
-                min = 5;
-                max = 5;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-        }
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - cztery linie z jedną odchyłką
-
-    static List<LineVariant> czteryLinieJednaOdchylka(List<LineVariant> lines, NodeName node) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-        switch (Period.TAKT) {
-
-            case 12:
-
-                byte min = 2;
-                byte max = 4;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 15:
-                min = 3;
-                max = 5;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 20:
-                min = 4;
-                max = 6;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-        }
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - cztery linie z jedną odchyłką wymuszoną
-
-    static List<LineVariant> czteryLinieJednaOdchylkaWymuszona(List<LineVariant> lines, NodeName node) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-        switch (Period.TAKT) {
-
-            case 12:
-
-                byte min = 2;
-                byte max = 4;
-                byte minB = 3;
-                byte maxB = 3;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (
-
-                            (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                                    && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                                    && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                                    && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                                    && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minB) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxB))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minB) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxB))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minB) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxB))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minB) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxB))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 15:
-                min = 3;
-                max = 5;
-                minB = 3;
-                maxB = 4;
-
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (
-                            (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                                    && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                                    && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                                    && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                                    && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minB) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxB))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minB) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxB))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minB) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxB))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minB) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxB))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 20:
-                min = 4;
-                max = 6;
-                minB = 5;
-                maxB = 5;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (
-                            (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                                    && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                                    && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                                    && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                                    && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minB) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxB))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minB) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxB))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minB) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxB))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minB) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxB))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-        }
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - cztery linie z dwoma odchyłkami
-
-    static List<LineVariant> czteryLinieDwieOdchylki(List<LineVariant> lines, NodeName node) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-        switch (Period.TAKT) {
-
-            case 12:
-
-                byte min = 1;
-                byte max = 5;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 15:
-                min = 2;
-                max = 6;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 20:
-                min = 3;
-                max = 7;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT)
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-        }
-        return goodLineVariants;
-    }
 
 
     // metoda sprawdzająca warunki - cztery linie z dwoma odchyłkami wymuszonymi
