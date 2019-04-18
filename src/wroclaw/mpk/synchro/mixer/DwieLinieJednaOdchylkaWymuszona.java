@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DwieLinieJednaOdchylkaWymuszona {
 
-    // metoda sprawdzająca warunki - dwie linie z jedną odchyłką wymuszoną
+
 
     public static List<LineVariant> execute(List<LineVariant> lines, NodeName node) {
         List<LineVariant> goodLineVariants = new ArrayList<>();

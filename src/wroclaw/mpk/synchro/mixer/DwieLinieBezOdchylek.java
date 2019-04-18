@@ -12,7 +12,7 @@ import java.util.List;
 public class DwieLinieBezOdchylek {
 
 
-    // metoda sprawdzająca warunki - dwie linie bez odchyłek
+
 
     public static List<LineVariant> execute(List<LineVariant> lines, NodeName node) {
 

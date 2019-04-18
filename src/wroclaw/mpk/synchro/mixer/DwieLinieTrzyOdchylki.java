@@ -9,19 +9,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DwieLinieDwieOdchylki {
+public class DwieLinieTrzyOdchylki {
 
 
+    // metoda sprawdzająca warunki - dwie linie z trzema odchyłkami
 
-
-   public static List<LineVariant> execute(List<LineVariant> lines, NodeName node) {
+    public static List<LineVariant> exectute(List<LineVariant> lines, NodeName node) {
         List<LineVariant> goodLineVariants = new ArrayList<>();
 
         switch (Period.TAKT) {
 
             case 12:
-                byte min = 4;
-                byte max = 8;
+                byte min = 3;
+                byte max = 9;
 
                 for (int i = 0; i < lines.size(); i++) {
                     LineVariant currentLineVariant = lines.get(i);
@@ -38,8 +38,8 @@ public class DwieLinieDwieOdchylki {
 
             case 15:
 
-                min = 5;
-                max = 10;
+                min = 4;
+                max = 11;
 
                 for (int i = 0; i < lines.size(); i++) {
                     LineVariant currentLineVariant = lines.get(i);
@@ -56,8 +56,8 @@ public class DwieLinieDwieOdchylki {
 
             case 20:
 
-                min = 8;
-                max = 12;
+                min = 7;
+                max = 13;
 
                 for (int i = 0; i < lines.size(); i++) {
                     LineVariant currentLineVariant = lines.get(i);
@@ -74,5 +74,6 @@ public class DwieLinieDwieOdchylki {
         }
         return goodLineVariants;
     }
+
 
 }

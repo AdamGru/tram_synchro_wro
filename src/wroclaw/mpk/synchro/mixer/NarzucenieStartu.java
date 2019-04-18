@@ -10,7 +10,7 @@ import java.util.List;
 public class NarzucenieStartu {
 
 
-    // metoda sprawdzająca warunki - narzucenie startu
+
 
     public static List<LineVariant> execute(List<LineVariant> lines, NodeName node, int time) {
         List<LineVariant> goodLineVariants = new ArrayList<>();

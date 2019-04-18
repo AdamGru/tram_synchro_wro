@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TrzyLinieJednaOdchylka {
 
-    // metoda sprawdzająca warunki - trzy linie z jedną odchyłką
+
 
 
     public static List<LineVariant> execute(List<LineVariant> lines, NodeName node) {
