@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CzteryLinieDwieOdchylki {
 
-    // metoda sprawdzająca warunki - cztery linie z dwoma odchyłkami
+
 
     public static List<LineVariant> execute(List<LineVariant> lines, NodeName node) {
         List<LineVariant> goodLineVariants = new ArrayList<>();

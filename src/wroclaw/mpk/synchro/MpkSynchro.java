@@ -386,7 +386,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 25");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, poswietne1), useOnlyAvaliableLineVariants(availableLineVariants, poswietne15)), NodeName.POSWIETNE, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, poswietne1), useOnlyAvaliableLineVariants(availableLineVariants, poswietne15)), NodeName.POSWIETNE, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -462,7 +462,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 32");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.KRZYKI, 2);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.KRZYKI, 2);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -504,7 +504,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 36");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.JPII, 2);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.JPII, 2);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -546,7 +546,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 40");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, kozanow32)), NodeName.JPII, 2);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, kozanow32)), NodeName.JPII, 2);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -600,7 +600,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 45");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -642,7 +642,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 49");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -674,7 +674,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 52");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -740,7 +740,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 58");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), useOnlyAvaliableLineVariants(availableLineVariants, sepolno33)), NodeName.SEPOLNO, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), useOnlyAvaliableLineVariants(availableLineVariants, sepolno33)), NodeName.SEPOLNO, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -794,7 +794,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 63");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.LESNICA, 6);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.LESNICA, 6);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -826,7 +826,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 66");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.LESNICA, 6);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.LESNICA, 6);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -892,7 +892,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 72");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.JPII, 2);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.JPII, 2);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -934,7 +934,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 76");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, gaj32)), NodeName.JPII, 2);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, gaj32)), NodeName.JPII, 2);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -988,7 +988,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 81");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11)), NodeName.KROMERA, 5);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11)), NodeName.KROMERA, 5);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1032,7 +1032,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 85");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki2), useOnlyAvaliableLineVariants(availableLineVariants, klecina17)), NodeName.ARKADY, 2);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki2), useOnlyAvaliableLineVariants(availableLineVariants, klecina17)), NodeName.ARKADY, 2);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1130,7 +1130,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 94");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, park9), useOnlyAvaliableLineVariants(availableLineVariants, pilczyce33)), NodeName.SEPOLNO, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, park9), useOnlyAvaliableLineVariants(availableLineVariants, pilczyce33)), NodeName.SEPOLNO, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1224,7 +1224,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 103");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, wpp23)), NodeName.KROMERA, 5);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, wpp23)), NodeName.KROMERA, 5);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1279,7 +1279,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 108");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kowale6), useOnlyAvaliableLineVariants(availableLineVariants, kromera23)), NodeName.KROMERA, 5);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kowale6), useOnlyAvaliableLineVariants(availableLineVariants, kromera23)), NodeName.KROMERA, 5);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1333,7 +1333,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 113");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, karlowice8), useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.AUTOBUSOWY, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, karlowice8), useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.AUTOBUSOWY, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -1395,7 +1395,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 119");
 
-        step = dwieLinieMinOdstep(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, tarnogaj8), useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.AUTOBUSOWY, 4);
+        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, tarnogaj8), useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.AUTOBUSOWY, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -2088,165 +2088,10 @@ public class MpkSynchro {
 
 
 
-    // metoda sprawdzająca warunki - cztery linie z dwoma odchyłkami wymuszonymi
-
-    static List<LineVariant> czteryLinieDwieOdchylkiWymuszone(List<LineVariant> lines, NodeName node) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-        switch (Period.TAKT) {
-
-            case 12:
-
-                byte min = 1;
-                byte max = 5;
-                byte minB = 2;
-                byte maxB = 4;
-                byte minC = 3;
-                byte maxC = 3;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (
-                            (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                                    && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                                    && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                                    && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                                    && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
 
 
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minB) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxB))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minB) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxB))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minB) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxB))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minB) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxB))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minC) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxC))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minC) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxC))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minC) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxC))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minC) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxC))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
 
 
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 15:
-                min = 2;
-                max = 6;
-                minB = 3;
-                maxB = 5;
-                minC = 3;
-                maxC = 4;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (
-
-                            (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                                    && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                                    && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                                    && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                                    && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minB) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxB))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minB) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxB))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minB) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxB))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minB) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxB))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minC) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxC))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minC) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxC))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minC) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxC))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minC) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxC))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-            case 20:
-                min = 3;
-                max = 7;
-                minB = 4;
-                maxB = 6;
-                minC = 5;
-                maxC = 5;
-
-                for (int i = 0; i < lines.size(); i++) {
-                    LineVariant currentLineVariant = lines.get(i);
-                    List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-                    Collections.sort(foundnodes);
-
-                    if (
-                            (((foundnodes.get(1).time - foundnodes.get(0).time >= min) && (foundnodes.get(1).time - foundnodes.get(0).time <= max))
-                                    && ((foundnodes.get(2).time - foundnodes.get(1).time >= min) && (foundnodes.get(2).time - foundnodes.get(1).time <= max))
-                                    && ((foundnodes.get(3).time - foundnodes.get(2).time >= min) && (foundnodes.get(3).time - foundnodes.get(2).time <= max))
-                                    && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= min) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= max))
-                                    && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minB) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxB))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minB) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxB))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minB) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxB))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minB) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxB))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                                    &&
-                                    !(((foundnodes.get(1).time - foundnodes.get(0).time >= minC) && (foundnodes.get(1).time - foundnodes.get(0).time <= maxC))
-                                            && ((foundnodes.get(2).time - foundnodes.get(1).time >= minC) && (foundnodes.get(2).time - foundnodes.get(1).time <= maxC))
-                                            && ((foundnodes.get(3).time - foundnodes.get(2).time >= minC) && (foundnodes.get(3).time - foundnodes.get(2).time <= maxC))
-                                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time >= minC) && (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time <= maxC))
-                                            && ((foundnodes.get(1).time - foundnodes.get(0).time) + (foundnodes.get(2).time - foundnodes.get(1).time) + (foundnodes.get(3).time - foundnodes.get(2).time) + (foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) == Period.TAKT))
-
-                    ) {
-                        goodLineVariants.add(currentLineVariant);
-                    }
-                }
-                break;
-
-        }
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dwie linie minimalny odstęp
-
-    static List<LineVariant> dwieLinieMinOdstep(List<LineVariant> lines, NodeName node, int gap) {
-
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-            if (Math.abs(foundnodes.get(0).time - foundnodes.get(1).time) >= gap) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-
-        return goodLineVariants;
-    }
 
 
     // metoda sprawdzająca warunki - dwie linie minimalny odstęp z zachowaniem kolejności
