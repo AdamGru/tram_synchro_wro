@@ -1269,7 +1269,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 107");
 
-        mix = siedemLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.WPP_23, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 1);
+        mix = SiedemLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.WPP_23, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1323,7 +1323,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 112");
 
-        mix = siedemLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.KROMERA_23, LineName.GAJ_31, LineName.GAJ_32, LineName.SEPOLNO_33, NodeName.JPII, 1);
+        mix = SiedemLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.KROMERA_23, LineName.GAJ_31, LineName.GAJ_32, LineName.SEPOLNO_33, NodeName.JPII, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -2121,36 +2121,7 @@ public class MpkSynchro {
 
 
 
-    // metoda sprawdzająca warunki - siedem linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
 
-    static List<LineVariant> siedemLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                lineName6, LineName lineName7, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(6).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
 
 
     // metoda sprawdzająca warunki - osiem linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
