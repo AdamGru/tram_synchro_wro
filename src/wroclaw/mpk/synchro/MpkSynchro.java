@@ -150,7 +150,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 4");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.OPOROW_4, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_4, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -172,7 +172,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 6");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -194,7 +194,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 8");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.OPOROW_5, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.OPOROW_5, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -204,7 +204,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 9");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OPOROW_4, LineName.OPOROW_5, NodeName.OPOROW, 4);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_4, LineName.OPOROW_5, NodeName.OPOROW, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -238,7 +238,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 12");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, NodeName.DOMINIKANSKA, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -260,7 +260,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 14");
 
-        step = dwieLinieMinOdstepKolejnosc(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat24), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 1);
+        step = DwieLinieMinOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat24), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 1);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -284,7 +284,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 16");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.FAT_14, NodeName.ARKADY, 2);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.FAT_14, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -318,7 +318,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 19");
 
-        step = dwieLinieMinOdstepKolejnosc(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 1);
+        step = DwieLinieMinOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 1);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -354,7 +354,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 22");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.POSWIETNE_7, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.POSWIETNE_7, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -376,7 +376,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 24");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -398,7 +398,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 26");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.POSWIETNE_1, LineName.POSWIETNE_7, LineName.POSWIETNE_15, NodeName.POSWIETNE, 4);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.POSWIETNE_1, LineName.POSWIETNE_7, LineName.POSWIETNE_15, NodeName.POSWIETNE, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -408,7 +408,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 27");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OSOBOWICE_14, LineName.POSWIETNE_15, LineName.OSOBOWICE_24, NodeName.STASZICA, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OSOBOWICE_14, LineName.POSWIETNE_15, LineName.OSOBOWICE_24, NodeName.STASZICA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -418,7 +418,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 28");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, NodeName.ARKADY, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -452,7 +452,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 31");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -474,7 +474,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 33");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -494,7 +494,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 35");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.SEPOLNO_9, NodeName.GLOWNY, 1);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.SEPOLNO_9, NodeName.GLOWNY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -516,7 +516,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 37");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, NodeName.JPII, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, NodeName.JPII, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -526,7 +526,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 38");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, NodeName.LEGIONOW, 1);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, NodeName.LEGIONOW, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -536,7 +536,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 39");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, NodeName.ARKADY, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -570,7 +570,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 42");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.JPII, 2);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.JPII, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -580,7 +580,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 43");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.LEGIONOW, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.LEGIONOW, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -590,7 +590,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 44");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.ARKADY, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -612,7 +612,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 46");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -622,7 +622,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 47");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, NodeName.DOMINIKANSKA, 3);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, NodeName.DOMINIKANSKA, 3);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -632,7 +632,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 48");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KOWALE_6, LineName.KROMERA_11, NodeName.KROMERA, 5);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.KROMERA_11, NodeName.KROMERA, 5);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -654,7 +654,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 50");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_4, LineName.LESNICA_20, NodeName.OPOROW, 1);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_4, LineName.LESNICA_20, NodeName.OPOROW, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -664,7 +664,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 51");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, NodeName.BISKUPIN, 3);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, NodeName.BISKUPIN, 3);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -698,7 +698,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 54");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.KSIEZE_5, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_5, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -708,7 +708,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 55");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.KSIEZE_5, NodeName.DOMINIKANSKA, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.KSIEZE_5, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -730,7 +730,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 57");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.LESNICA_20, NodeName.OPOROW, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.LESNICA_20, NodeName.OPOROW, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -752,7 +752,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 59");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.SEPOLNO_9, LineName.SEPOLNO_17, LineName.SEPOLNO_33, NodeName.SEPOLNO, 4);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.SEPOLNO_9, LineName.SEPOLNO_17, LineName.SEPOLNO_33, NodeName.SEPOLNO, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -762,7 +762,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 60");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -784,7 +784,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 62");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.KSIEZE_3, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_3, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -806,7 +806,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 64");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.KSIEZE_3, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.BISKUPIN_10, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_3, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.BISKUPIN_10, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -816,7 +816,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 65");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.BISKUPIN_10, NodeName.BISKUPIN, 3);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.BISKUPIN_10, NodeName.BISKUPIN, 3);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -850,7 +850,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 68");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.SEPOLNO_33, NodeName.JPII, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.SEPOLNO_33, NodeName.JPII, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -860,7 +860,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 69");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -882,7 +882,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 71");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.OPOROW_4, LineName.OPOROW_5, LineName.OPOROW_20, NodeName.OPOROW, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_4, LineName.OPOROW_5, LineName.OPOROW_20, NodeName.OPOROW, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -904,7 +904,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 73");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.GAJ_31, LineName.SEPOLNO_33, NodeName.JPII, 2);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.GAJ_31, LineName.SEPOLNO_33, NodeName.JPII, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -914,7 +914,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 74");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.FAT_24, LineName.GAJ_31, NodeName.JPII, 1);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_24, LineName.GAJ_31, NodeName.JPII, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -924,7 +924,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 75");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.GAJ_31, NodeName.ARKADY, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.GAJ_31, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -958,7 +958,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 78");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.GAJ_31, LineName.GAJ_32, LineName.SEPOLNO_33, NodeName.JPII, 2);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.GAJ_31, LineName.GAJ_32, LineName.SEPOLNO_33, NodeName.JPII, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -968,7 +968,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 79");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.FAT_24, LineName.GAJ_31, LineName.GAJ_32, NodeName.JPII, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_24, LineName.GAJ_31, LineName.GAJ_32, NodeName.JPII, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -978,7 +978,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 80");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1000,7 +1000,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 82");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1022,7 +1022,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 84");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1044,7 +1044,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 86");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.KLECINA_17, LineName.OPOROW_20, NodeName.ARKADY, 2);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.KLECINA_17, LineName.OPOROW_20, NodeName.ARKADY, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1064,7 +1064,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 88");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, NodeName.DOMINIKANSKA, 2);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1086,7 +1086,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 90");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, NodeName.DOMINIKANSKA, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1096,7 +1096,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 91");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, NodeName.DOMINIKANSKA, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1142,7 +1142,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 95");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.OPOROW_5, LineName.LESNICA_10, LineName.PILCZYCE_33, NodeName.DOMINIKANSKA, 1);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.OPOROW_5, LineName.LESNICA_10, LineName.PILCZYCE_33, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1152,7 +1152,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 96");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 2);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1184,7 +1184,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 99");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.PARK_15, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.PARK_15, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1194,7 +1194,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 100");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1204,7 +1204,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 101");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.FAT_14, LineName.PARK_15, NodeName.STASZICA, 3);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_14, LineName.PARK_15, NodeName.STASZICA, 3);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1214,7 +1214,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 102");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_1, LineName.KLECINA_7, LineName.PARK_15, NodeName.POSWIETNE, 4);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_1, LineName.KLECINA_7, LineName.PARK_15, NodeName.POSWIETNE, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1249,7 +1249,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 105");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, LineName.WPP_23, NodeName.DOMINIKANSKA, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, LineName.WPP_23, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1259,7 +1259,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 106");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.LESNICA_3, LineName.OPOROW_4, LineName.LESNICA_10, LineName.WPP_23, LineName.PILCZYCE_33, NodeName.DOMINIKANSKA, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.OPOROW_4, LineName.LESNICA_10, LineName.WPP_23, LineName.PILCZYCE_33, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1303,7 +1303,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 110");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, LineName.KROMERA_23, NodeName.DOMINIKANSKA, 3);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, LineName.KROMERA_23, NodeName.DOMINIKANSKA, 3);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1313,7 +1313,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 111");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KSIEZE_5, LineName.BISKUPIN_4, LineName.BISKUPIN_10, LineName.KROMERA_23, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.BISKUPIN_4, LineName.BISKUPIN_10, LineName.KROMERA_23, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1345,7 +1345,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 114");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KARLOWICE_8, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.AUTOBUSOWY, 4);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KARLOWICE_8, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.AUTOBUSOWY, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1355,7 +1355,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 115");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.KSIEZE_5, LineName.KARLOWICE_8, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_5, LineName.KARLOWICE_8, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1365,7 +1365,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 116");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KARLOWICE_8, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, LineName.KROMERA_23, NodeName.DOMINIKANSKA, 2);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KARLOWICE_8, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, LineName.KROMERA_23, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1375,7 +1375,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 117");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KOWALE_6, LineName.KARLOWICE_8, LineName.KROMERA_11, LineName.KROMERA_23, NodeName.BEMA, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.KARLOWICE_8, LineName.KROMERA_11, LineName.KROMERA_23, NodeName.BEMA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1385,7 +1385,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 118");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.POSWIETNE_1, LineName.POSWIETNE_7, LineName.KARLOWICE_8, NodeName.NADODRZE, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.POSWIETNE_1, LineName.POSWIETNE_7, LineName.KARLOWICE_8, NodeName.NADODRZE, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1407,7 +1407,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 120");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.TARNOGAJ_8, LineName.GAJ_31, LineName.GAJ_32, NodeName.AUTOBUSOWY, 4);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.TARNOGAJ_8, LineName.GAJ_31, LineName.GAJ_32, NodeName.AUTOBUSOWY, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1417,7 +1417,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 121");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.TARNOGAJ_8, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, NodeName.GLOWNY, 1);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.TARNOGAJ_8, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, NodeName.GLOWNY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1427,7 +1427,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 122");
 
-        mix = piecLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.TARNOGAJ_8, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, LineName.WPP_23, NodeName.DOMINIKANSKA, 2);
+        mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.TARNOGAJ_8, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, LineName.WPP_23, NodeName.DOMINIKANSKA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1437,7 +1437,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 123");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_6, LineName.TARNOGAJ_8, LineName.GRABISZYNSKA_CM_11, LineName.WPP_23, NodeName.BEMA, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_6, LineName.TARNOGAJ_8, LineName.GRABISZYNSKA_CM_11, LineName.WPP_23, NodeName.BEMA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1447,7 +1447,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 124");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_1, LineName.KLECINA_7, LineName.TARNOGAJ_8, NodeName.NADODRZE, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_1, LineName.KLECINA_7, LineName.TARNOGAJ_8, NodeName.NADODRZE, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1469,7 +1469,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 126");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0P, LineName.BISKUPIN_1, LineName.TARNOGAJ_8, NodeName.NADODRZE, 3);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.BISKUPIN_1, LineName.TARNOGAJ_8, NodeName.NADODRZE, 3);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1479,7 +1479,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 127");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0P, LineName.OPOROW_4, LineName.PILCZYCE_33, NodeName.GRUNWALDZKI, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OPOROW_4, LineName.PILCZYCE_33, NodeName.GRUNWALDZKI, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1489,7 +1489,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 128");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0P, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.ARKADY, 1);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1499,7 +1499,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 129");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.LEGIONOW, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.LEGIONOW, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1509,7 +1509,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 130");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, NodeName.LEGIONOW, 4);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, NodeName.LEGIONOW, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1519,7 +1519,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 131");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, LineName.POSWIETNE_15, LineName.OSOBOWICE_24, NodeName.STASZICA, 2);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, LineName.POSWIETNE_15, LineName.OSOBOWICE_24, NodeName.STASZICA, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1541,7 +1541,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 133");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0L, LineName.POSWIETNE_1, LineName.KARLOWICE_8, NodeName.NADODRZE, 2);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.POSWIETNE_1, LineName.KARLOWICE_8, NodeName.NADODRZE, 2);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1551,7 +1551,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 134");
 
-        mix = trzyLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0L, LineName.BISKUPIN_4, LineName.SEPOLNO_33, NodeName.GRUNWALDZKI, 1);
+        mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.BISKUPIN_4, LineName.SEPOLNO_33, NodeName.GRUNWALDZKI, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1561,7 +1561,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 135");
 
-        mix = szescLiniiMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0L, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.PARK_15, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
+        mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.PARK_15, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1571,7 +1571,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 136");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0L, LineName.FAT_24, LineName.GAJ_31, LineName.GAJ_32, NodeName.LEGIONOW, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_24, LineName.GAJ_31, LineName.GAJ_32, NodeName.LEGIONOW, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1581,7 +1581,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 137");
 
-        mix = dwieLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0L, LineName.FAT_24, NodeName.LEGIONOW, 4);
+        mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_24, NodeName.LEGIONOW, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1591,7 +1591,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 138");
 
-        mix = czteryLinieMinOdstepIstniejaceLineVarianty(mix, LineName.NADODRZE_0L, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
+        mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);;
@@ -2094,229 +2094,31 @@ public class MpkSynchro {
 
 
 
-    // metoda sprawdzająca warunki - dwie linie minimalny odstęp z zachowaniem kolejności
 
-    static List<LineVariant> dwieLinieMinOdstepKolejnosc(List<LineVariant> lines, LineName lineName1, LineName
-            lineName2, NodeName node, int gap) {
 
-        List<LineVariant> goodLineVariants = new ArrayList<>();
 
 
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findOnlyOneLineAndNode(lineName1, node);
-            foundnodes.addAll(currentLineVariant.findOnlyOneLineAndNode(lineName2, node));
 
-            if ((foundnodes.get(1).time - foundnodes.get(0).time >= gap) || ((foundnodes.get(1).time - foundnodes.get(0).time < 0) && (foundnodes.get(1).time + Period.TAKT - foundnodes.get(0).time >= gap))) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
 
 
-        return goodLineVariants;
-    }
 
 
-    // metoda sprawdzająca warunki - trzy linie minimalny odstęp
 
-    static List<LineVariant> trzyLinieMinOdstep(List<LineVariant> lines, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
 
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
 
-            if ((Math.abs(foundnodes.get(0).time - foundnodes.get(1).time) >= gap) && (Math.abs(foundnodes.get(1).time - foundnodes.get(2).time) >= gap) && (Math.abs(foundnodes.get(0).time - foundnodes.get(2).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
 
-        return goodLineVariants;
-    }
 
 
-    // metoda sprawdzająca warunki - cztery linie minimalny odstęp
 
-    static List<LineVariant> czteryLinieMinOdstep(List<LineVariant> lines, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
 
 
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
 
-            if ((Math.abs(foundnodes.get(0).time - foundnodes.get(1).time) >= gap) && (Math.abs(foundnodes.get(0).time - foundnodes.get(2).time) >= gap) && (Math.abs(foundnodes.get(0).time - foundnodes.get(3).time) >= gap) && (Math.abs(foundnodes.get(1).time - foundnodes.get(2).time) >= gap) && (Math.abs(foundnodes.get(1).time - foundnodes.get(3).time) >= gap) && (Math.abs(foundnodes.get(2).time - foundnodes.get(3).time) >= gap)
 
 
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
 
-        return goodLineVariants;
-    }
 
 
-    // metoda sprawdzająca warunki - pięć linii minimalny odstęp
 
-    static List<LineVariant> piecLiniiMinOdstep(List<LineVariant> lines, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-            if ((Math.abs(foundnodes.get(0).time - foundnodes.get(1).time) >= gap) && (Math.abs(foundnodes.get(0).time - foundnodes.get(2).time) >= gap) && (Math.abs(foundnodes.get(0).time - foundnodes.get(3).time) >= gap) && (Math.abs(foundnodes.get(0).time - foundnodes.get(4).time) >= gap) && (Math.abs(foundnodes.get(1).time - foundnodes.get(2).time) >= gap) && (Math.abs(foundnodes.get(1).time - foundnodes.get(3).time) >= gap) && (Math.abs(foundnodes.get(1).time - foundnodes.get(4).time) >= gap) && (Math.abs(foundnodes.get(2).time - foundnodes.get(3).time) >= gap) && (Math.abs(foundnodes.get(2).time - foundnodes.get(4).time) >= gap) && (Math.abs(foundnodes.get(3).time - foundnodes.get(4).time) >= gap)
-
-
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dwie linie minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> dwieLinieMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(1).time) >= gap)
-            ) goodLineVariants.add(currentLineVariant);
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - trzy linie minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> trzyLinieMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(2).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - cztery linie minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> czteryLinieMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - piec linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> piecLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(4).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - sześć linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> szescLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                               lineName6, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(5).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
 
 
     // metoda sprawdzająca warunki - siedem linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
