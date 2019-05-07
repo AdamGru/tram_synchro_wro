@@ -154,7 +154,7 @@ public class MpkSynchro {
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
-   
+
 
         ///////////przyjazdy do Leśnicy 3, 10, 20
 
@@ -248,7 +248,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 13");
 
-        step = dwieLinieMaxOdstepKolejnosc(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat24), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 4);
+        step = DwieLinieMaxOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat24), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -306,7 +306,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 18");
 
-        step = dwieLinieMaxOdstepKolejnosc(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 4);
+        step = DwieLinieMaxOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 4);
         mix = mix2ListLineVariantNonEx(mix, step);
         mix = addAllNodes(mix, availableLineVariants);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
@@ -484,7 +484,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 34");
 
-        mix = szescLiniiMaxOdstepIstniejaceLineVarianty(mix, LineName.BISKUPIN_2, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 4);
+        mix = SzescLiniiMaxOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1054,7 +1054,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 87");
 
-        mix = szescLiniiMaxOdstepIstniejaceLineVarianty(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.KLECINA_17, LineName.OPOROW_20, NodeName.ARKADY, 5);
+        mix = SzescLiniiMaxOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.KLECINA_17, LineName.OPOROW_20, NodeName.ARKADY, 5);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1162,7 +1162,7 @@ public class MpkSynchro {
 
         System.out.println("warunek 97");
 
-        mix = szescLiniiMaxOdstepIstniejaceLineVarianty(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 4);
+        mix = SzescLiniiMaxOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 4);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
@@ -1242,7 +1242,6 @@ public class MpkSynchro {
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
         counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
-
 
 
         ///////////// Odjazdy z Bema do Galerii Dominikańskiej 9, 11, 17, 23
@@ -1594,7 +1593,8 @@ public class MpkSynchro {
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
         availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);;
+        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        ;
 
 
         //zapisywanie do pliku
@@ -1634,10 +1634,9 @@ public class MpkSynchro {
     // koniec metody main
 
 
-
     // podsumowanie etapu
 
-    static int scopeSummary (int counter, List<LineVariant> mix, long millisActualTime, String filePath) throws IOException {
+    static int scopeSummary(int counter, List<LineVariant> mix, long millisActualTime, String filePath) throws IOException {
         System.out.println("liczba kombinacji po zakończeniu etapu " + counter + ": " + mix.size());
         counter++;
         long executionTime = System.currentTimeMillis() - millisActualTime;
@@ -1646,8 +1645,6 @@ public class MpkSynchro {
         writeFileQuantityOfCombination(filePath, Integer.toString(mix.size()));
         return counter;
     }
-
-
 
 
     // metoda tworząca plik tekstowy z wynikiem
@@ -1841,9 +1838,6 @@ public class MpkSynchro {
 
         return isTheSame;
     }
-
-
-
 
 
     // metoda drukująca listę wariantów dla linii
@@ -2047,636 +2041,6 @@ public class MpkSynchro {
 
             }
         }
-        return goodLineVariants;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // metoda sprawdzająca warunki - osiem linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> osiemLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                               lineName6, LineName lineName7, LineName lineName8, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(7).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dziewięć linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> dziewiecLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                  lineName6, LineName lineName7, LineName lineName8, LineName lineName9, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(8).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dziesięć linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> dziesiecLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                  lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, NodeName node,
-                                                                          int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(9).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - jedenaście linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> jedenascieLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                    lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, LineName
-                                                                                    lineName11, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, lineName11, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(10).time - foundnodes.get(9).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(10).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dwanaście linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> dwanascieLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                   lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, LineName
-                                                                                   lineName11, LineName lineName12, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, lineName11, lineName12, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(10).time - foundnodes.get(9).time) >= gap)
-                            && ((foundnodes.get(11).time - foundnodes.get(10).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(11).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - trzynaście linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> trzynascieLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                    lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, LineName
-                                                                                    lineName11, LineName lineName12, LineName lineName13, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, lineName11, lineName12, lineName13, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(10).time - foundnodes.get(9).time) >= gap)
-                            && ((foundnodes.get(11).time - foundnodes.get(10).time) >= gap)
-                            && ((foundnodes.get(12).time - foundnodes.get(11).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(12).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - czternaście linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> czternascieLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                     lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, LineName
-                                                                                     lineName11, LineName lineName12, LineName lineName13, LineName lineName14, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, lineName11, lineName12, lineName13, lineName14, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(10).time - foundnodes.get(9).time) >= gap)
-                            && ((foundnodes.get(11).time - foundnodes.get(10).time) >= gap)
-                            && ((foundnodes.get(12).time - foundnodes.get(11).time) >= gap)
-                            && ((foundnodes.get(13).time - foundnodes.get(12).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(13).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - piętnaście linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> pietnascieLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                    lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, LineName
-                                                                                    lineName11, LineName lineName12, LineName lineName13, LineName lineName14, LineName lineName15, NodeName node,
-                                                                            int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, lineName11, lineName12, lineName13, lineName14, lineName15, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(10).time - foundnodes.get(9).time) >= gap)
-                            && ((foundnodes.get(11).time - foundnodes.get(10).time) >= gap)
-                            && ((foundnodes.get(12).time - foundnodes.get(11).time) >= gap)
-                            && ((foundnodes.get(13).time - foundnodes.get(12).time) >= gap)
-                            && ((foundnodes.get(14).time - foundnodes.get(13).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(14).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - szesnaście linii minimalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> szesnascieLiniiMinOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                    lineName6, LineName lineName7, LineName lineName8, LineName lineName9, LineName lineName10, LineName
-                                                                                    lineName11, LineName lineName12, LineName lineName13, LineName lineName14, LineName lineName15, LineName
-                                                                                    lineName16, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, lineName8, lineName9, lineName10, lineName11, lineName12, lineName13, lineName14, lineName15, lineName16, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) >= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) >= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) >= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) >= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) >= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) >= gap)
-                            && ((foundnodes.get(7).time - foundnodes.get(6).time) >= gap)
-                            && ((foundnodes.get(8).time - foundnodes.get(7).time) >= gap)
-                            && ((foundnodes.get(9).time - foundnodes.get(8).time) >= gap)
-                            && ((foundnodes.get(10).time - foundnodes.get(9).time) >= gap)
-                            && ((foundnodes.get(11).time - foundnodes.get(10).time) >= gap)
-                            && ((foundnodes.get(12).time - foundnodes.get(11).time) >= gap)
-                            && ((foundnodes.get(13).time - foundnodes.get(12).time) >= gap)
-                            && ((foundnodes.get(14).time - foundnodes.get(13).time) >= gap)
-                            && ((foundnodes.get(15).time - foundnodes.get(14).time) >= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(15).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dwie linie maksymalny odstęp
-
-    static List<LineVariant> dwieLinieMaxOdstep(List<LineVariant> lines, NodeName node, int gap) {
-
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findNodes(node);
-
-            if (Math.abs(foundnodes.get(0).time - foundnodes.get(1).time) <= gap) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dwie linie maksymalny odstęp z zachowaniem kolejności
-
-    static List<LineVariant> dwieLinieMaxOdstepKolejnosc(List<LineVariant> lines, LineName lineName1, LineName
-            lineName2, NodeName node, int gap) {
-
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findOnlyOneLineAndNode(lineName1, node);
-            foundnodes.addAll(currentLineVariant.findOnlyOneLineAndNode(lineName2, node));
-
-            if ((foundnodes.get(1).time - foundnodes.get(0).time <= gap) || ((foundnodes.get(1).time - foundnodes.get(0).time < 0) && (foundnodes.get(1).time + Period.TAKT - foundnodes.get(0).time <= gap))) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - dwie linie maksymalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> dwieLinieMaxOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(1).time) <= gap)
-            ) goodLineVariants.add(currentLineVariant);
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - trzy linie maksymalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> trzyLinieMaxOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) <= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(2).time) <= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - cztery linie maksymalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> czteryLinieMaxOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) <= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) <= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(3).time) <= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - piec linii maksymalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> piecLiniiMaxOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) <= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) <= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) <= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(4).time) <= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - sześć linii maksymalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> szescLiniiMaxOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                               lineName6, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) <= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) <= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) <= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) <= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(5).time) >= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
-        return goodLineVariants;
-    }
-
-
-    // metoda sprawdzająca warunki - siedem linii maksymalny odstęp (tylko dla istniejącej listy LineVariantów)
-
-    static List<LineVariant> siedemLiniiMaxOdstepIstniejaceLineVarianty(List<LineVariant> lines, LineName
-            lineName1, LineName lineName2, LineName lineName3, LineName lineName4, LineName lineName5, LineName
-                                                                                lineName6, LineName lineName7, NodeName node, int gap) {
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-
-        for (int i = 0; i < lines.size(); i++) {
-            LineVariant currentLineVariant = lines.get(i);
-            List<MpkNode> foundnodes = currentLineVariant.findLineAndNodes(lineName1, lineName2, lineName3, lineName4, lineName5, lineName6, lineName7, node);
-
-
-            Collections.sort(foundnodes);
-
-            if (
-                    ((foundnodes.get(1).time - foundnodes.get(0).time) <= gap)
-                            && ((foundnodes.get(2).time - foundnodes.get(1).time) <= gap)
-                            && ((foundnodes.get(3).time - foundnodes.get(2).time) <= gap)
-                            && ((foundnodes.get(4).time - foundnodes.get(3).time) <= gap)
-                            && ((foundnodes.get(5).time - foundnodes.get(4).time) <= gap)
-                            && ((foundnodes.get(6).time - foundnodes.get(5).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(6).time) <= gap)
-            ) {
-                goodLineVariants.add(currentLineVariant);
-            }
-        }
-
         return goodLineVariants;
     }
 
