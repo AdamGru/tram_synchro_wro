@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LineVariant implements Serializable {
 
-    List<MpkNode> nodes;
+    public List<MpkNode> nodes;
 
     public LineVariant(List<MpkNode> nodes) {
         this.nodes = nodes;

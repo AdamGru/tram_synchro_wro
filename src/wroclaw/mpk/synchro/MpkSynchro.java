@@ -1,6 +1,7 @@
 package wroclaw.mpk.synchro;
 
-import wroclaw.mpk.synchro.mixer.*;
+import wroclaw.mpk.synchro.condition.veryfication.*;
+import wroclaw.mpk.synchro.operation.Operation;
 
 import java.io.*;
 import java.util.*;
@@ -115,23 +116,23 @@ public class MpkSynchro {
 
         System.out.println("warunek 1");
 
-        List<LineVariant> step = CzteryLinieJednaOdchylkaWymuszona.execute(mix4ListLineVariant(poswietne1, krzyki2, oporow4, lesnica10), NodeName.BISKUPIN);
-        List<LineVariant> mix = nonexclusiveLineVariant(step);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        List<LineVariant> step = CzteryLinieJednaOdchylkaWymuszona.execute(Operation.mix4ListLineVariant(poswietne1, krzyki2, oporow4, lesnica10), NodeName.BISKUPIN);
+        List<LineVariant> mix = Operation.nonExclusiveLineVariant(step);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////odjazdy z Biskupina 2, 10
 
         System.out.println("warunek 2");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki2), useOnlyAvaliableLineVariants(availableLineVariants, lesnica10)), NodeName.BISKUPIN);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, krzyki2), Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica10)), NodeName.BISKUPIN);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////narzucenie odjazdu 10 z Biskupina
@@ -139,11 +140,11 @@ public class MpkSynchro {
         System.out.println("warunek 3");
 
         step = NarzucenieStartu.execute(lesnica10, NodeName.BISKUPIN, 10);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone Dworca i Rynku 2, 4, 10
@@ -151,21 +152,21 @@ public class MpkSynchro {
         System.out.println("warunek 4");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_4, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////przyjazdy do Leśnicy 3, 10, 20
 
         System.out.println("warunek 5");
 
-        step = TrzyLinieJednaOdchylkaWymuszona.execute(mix3ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica3), useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, lesnica20)), NodeName.PILCZYCE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = TrzyLinieJednaOdchylkaWymuszona.execute(Operation.mix3ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica20)), NodeName.PILCZYCE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone Dworca i Rynku 2, 3, 4, 10
@@ -173,21 +174,21 @@ public class MpkSynchro {
         System.out.println("warunek 6");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////Odjazdy z Księża 3, 5
 
         System.out.println("warunek 7");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica3), useOnlyAvaliableLineVariants(availableLineVariants, oporow5)), NodeName.KSIEZE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow5)), NodeName.KSIEZE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone Dworca i Rynku 2, 3, 4, 5, 10
@@ -195,9 +196,9 @@ public class MpkSynchro {
         System.out.println("warunek 8");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.OPOROW_5, LineName.LESNICA_10, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////przyjazdy do Oporowa 4, 5
@@ -205,33 +206,33 @@ public class MpkSynchro {
         System.out.println("warunek 9");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_4, LineName.OPOROW_5, NodeName.OPOROW, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////Grabiszyńska w stronę Oporowa 4, 5, 11, 24
 
         System.out.println("warunek 10");
 
-        step = CzteryLinieBezOdchylek.execute(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, oporow4), useOnlyAvaliableLineVariants(availableLineVariants, oporow5), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11), useOnlyAvaliableLineVariants(availableLineVariants, fat24)), NodeName.LEGIONOW);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = CzteryLinieBezOdchylek.execute(Operation.mix4ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow4), Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow5), Operation.useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11), Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat24)), NodeName.LEGIONOW);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////Grabiszyńska w stronę Oporowa 5 i 11
 
         System.out.println("warunek 11");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, oporow5), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11)), NodeName.LEGIONOW);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow5), Operation.useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11)), NodeName.LEGIONOW);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w kierunku płd (Skargi, Kołłątaja) 2, 5, 11
@@ -239,45 +240,45 @@ public class MpkSynchro {
         System.out.println("warunek 12");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////FAT 24
 
         System.out.println("warunek 13");
 
-        step = DwieLinieMaxOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat24), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMaxOdstepKolejnosc.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat24), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////FAT 24
 
         System.out.println("warunek 14");
 
-        step = DwieLinieMinOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat24), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 1);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstepKolejnosc.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat24), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), LineName.FAT_24, LineName.OSOBOWICE_24, NodeName.FAT, 1);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////odjazdy z Osobowic 14 i 24
 
         System.out.println("warunek 15");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, fat24)), NodeName.OSOBOWICE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat14), Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat24)), NodeName.OSOBOWICE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku płd. od Arkad do Hallera 2, 14
@@ -285,69 +286,69 @@ public class MpkSynchro {
         System.out.println("warunek 16");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.FAT_14, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////przyjazdy do Osobowic 14 i 24
 
         System.out.println("warunek 17");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, osobowice14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), NodeName.OSOBOWICE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), NodeName.OSOBOWICE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////FAT 14
 
         System.out.println("warunek 18");
 
-        step = DwieLinieMaxOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMaxOdstepKolejnosc.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat14), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////FAT 14
 
         System.out.println("warunek 19");
 
-        step = DwieLinieMinOdstepKolejnosc.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 1);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstepKolejnosc.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat14), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), LineName.FAT_14, LineName.OSOBOWICE_14, NodeName.FAT, 1);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////////20, 24 Hallera w stronę Powstańców 20 i 24
 
         System.out.println("warunek 20");
 
-        step = DwieLinieJednaOdchylkaWymuszona.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica20), useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), NodeName.FAT);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieJednaOdchylkaWymuszona.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica20), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice24)), NodeName.FAT);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazd do Poświętnego 1, 7
 
         System.out.println("warunek 21");
 
-        step = DwieLinieDwieOdchylkiWYmuszone.exectue(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, poswietne1), useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.POSWIETNE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieDwieOdchylkiWYmuszone.exectue(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne1), Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.POSWIETNE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 7, 20, 24
@@ -355,21 +356,21 @@ public class MpkSynchro {
         System.out.println("warunek 22");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.POSWIETNE_7, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 6, 7
 
         System.out.println("warunek 23");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kowale6), useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.ARKADY);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, kowale6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.ARKADY);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 6, 7, 20, 24
@@ -377,21 +378,21 @@ public class MpkSynchro {
         System.out.println("warunek 24");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////// przyjazdy do Poświętnego 1, 15
 
         System.out.println("warunek 25");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, poswietne1), useOnlyAvaliableLineVariants(availableLineVariants, poswietne15)), NodeName.POSWIETNE, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne1), Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne15)), NodeName.POSWIETNE, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy do Poświętnego 1, 7, 15
@@ -399,9 +400,9 @@ public class MpkSynchro {
         System.out.println("warunek 26");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.POSWIETNE_1, LineName.POSWIETNE_7, LineName.POSWIETNE_15, NodeName.POSWIETNE, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Staszica w kierunku pn. 14, 15, 24
@@ -409,9 +410,9 @@ public class MpkSynchro {
         System.out.println("warunek 27");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OSOBOWICE_14, LineName.POSWIETNE_15, LineName.OSOBOWICE_24, NodeName.STASZICA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudkiego od Dworca w kierunku pl. Legionów 5, 11, 15
@@ -419,33 +420,33 @@ public class MpkSynchro {
         System.out.println("warunek 28");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Parku 9, 15
 
         System.out.println("warunek 29");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), useOnlyAvaliableLineVariants(availableLineVariants, poswietne15)), NodeName.PARK);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne15)), NodeName.PARK);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Sępolno 9, 17
 
         System.out.println("warunek 30");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), useOnlyAvaliableLineVariants(availableLineVariants, sepolno17)), NodeName.SEPOLNO);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), Operation.useOnlyAvaliableLineVariants(availableLineVariants, sepolno17)), NodeName.SEPOLNO);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 6, 7, 17, 20, 24
@@ -453,21 +454,21 @@ public class MpkSynchro {
         System.out.println("warunek 31");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 2, 7
 
         System.out.println("warunek 32");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.KRZYKI, 2);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne7)), NodeName.KRZYKI, 2);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 2, 6, 7, 17, 20, 24
@@ -475,9 +476,9 @@ public class MpkSynchro {
         System.out.println("warunek 33");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku pn. od Hallera do Arkad 2, 6, 7, 17, 20, 24
@@ -485,9 +486,9 @@ public class MpkSynchro {
         System.out.println("warunek 34");
 
         mix = SzescLiniiMaxOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KOWALE_6, LineName.POSWIETNE_7, LineName.SEPOLNO_17, LineName.LESNICA_20, LineName.OSOBOWICE_24, NodeName.ARKADY, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Dworca w stronę Galerii Dominikańskiej 2, 9
@@ -495,21 +496,21 @@ public class MpkSynchro {
         System.out.println("warunek 35");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.SEPOLNO_9, NodeName.GLOWNY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 10, 31
 
         System.out.println("warunek 36");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.JPII, 2);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), Operation.useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.JPII, 2);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 3, 10, 20, 31
@@ -517,9 +518,9 @@ public class MpkSynchro {
         System.out.println("warunek 37");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, NodeName.JPII, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Legionów do JPII 14, 31
@@ -527,9 +528,9 @@ public class MpkSynchro {
         System.out.println("warunek 38");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, NodeName.LEGIONOW, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od Arkad do Legionów 5, 11, 15, 31
@@ -537,33 +538,33 @@ public class MpkSynchro {
         System.out.println("warunek 39");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 10, 32
 
         System.out.println("warunek 40");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), useOnlyAvaliableLineVariants(availableLineVariants, kozanow32)), NodeName.JPII, 2);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, lesnica10), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kozanow32)), NodeName.JPII, 2);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Gaju 31, 32
 
         System.out.println("warunek 41");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31), useOnlyAvaliableLineVariants(availableLineVariants, kozanow32)), NodeName.GAJ);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kozanow32)), NodeName.GAJ);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 3, 10, 20, 31, 32
@@ -571,9 +572,9 @@ public class MpkSynchro {
         System.out.println("warunek 42");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.JPII, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Legionów do JPII 14, 31, 32
@@ -581,9 +582,9 @@ public class MpkSynchro {
         System.out.println("warunek 43");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.LEGIONOW, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od Arkad do Legionów 5, 11, 15, 31, 32
@@ -591,21 +592,21 @@ public class MpkSynchro {
         System.out.println("warunek 44");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Grabiszyńska od FATu do Legionów 11, 14
 
         System.out.println("warunek 45");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, kromera11), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Dworca w stronę Galerii Dominikańskiej 2, 9, 11
@@ -613,9 +614,9 @@ public class MpkSynchro {
         System.out.println("warunek 46");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej do Bema 9, 11, 17
@@ -623,9 +624,9 @@ public class MpkSynchro {
         System.out.println("warunek 47");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, NodeName.DOMINIKANSKA, 3);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Kromera 6, 11
@@ -633,21 +634,21 @@ public class MpkSynchro {
         System.out.println("warunek 48");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.KROMERA_11, NodeName.KROMERA, 5);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Grabiszyńska od FATu do Legionów 4, 14
 
         System.out.println("warunek 49");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Oporowa 4, 20
@@ -655,9 +656,9 @@ public class MpkSynchro {
         System.out.println("warunek 50");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_4, LineName.LESNICA_20, NodeName.OPOROW, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Biskupin 2, 4
@@ -665,33 +666,33 @@ public class MpkSynchro {
         System.out.println("warunek 51");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, NodeName.BISKUPIN, 3);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Grabiszyńska od FATu do Legionów 5, 14
 
         System.out.println("warunek 52");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Grabiszyńska od FATu do Legionów 5, 11
 
         System.out.println("warunek 53");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, kromera11)), NodeName.LEGIONOW);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kromera11)), NodeName.LEGIONOW);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Dworca w stronę Galerii Dominikańskiej 2, 5, 9, 11
@@ -699,9 +700,9 @@ public class MpkSynchro {
         System.out.println("warunek 54");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_5, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone zach. 2, 4, 5
@@ -709,21 +710,21 @@ public class MpkSynchro {
         System.out.println("warunek 55");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.KSIEZE_5, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////Grabiszyńska w stronę pl. Legionów 4, 5, 11, 14
 
         System.out.println("warunek 56");
 
-        step = CzteryLinieJednaOdchylkaWymuszona.execute(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = CzteryLinieJednaOdchylkaWymuszona.execute(Operation.mix4ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze5), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kromera11), Operation.useOnlyAvaliableLineVariants(availableLineVariants, osobowice14)), NodeName.LEGIONOW);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Oporowa 4, 5, 20
@@ -731,21 +732,21 @@ public class MpkSynchro {
         System.out.println("warunek 57");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.LESNICA_20, NodeName.OPOROW, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Sępolno 9, 33
 
         System.out.println("warunek 58");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), useOnlyAvaliableLineVariants(availableLineVariants, sepolno33)), NodeName.SEPOLNO, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, sepolno9), Operation.useOnlyAvaliableLineVariants(availableLineVariants, sepolno33)), NodeName.SEPOLNO, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Sępolno 9, 17, 33
@@ -753,9 +754,9 @@ public class MpkSynchro {
         System.out.println("warunek 59");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.SEPOLNO_9, LineName.SEPOLNO_17, LineName.SEPOLNO_33, NodeName.SEPOLNO, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone zach. 2, 4, 5, 33
@@ -763,21 +764,21 @@ public class MpkSynchro {
         System.out.println("warunek 60");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Księże 3, 5
 
         System.out.println("warunek 61");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, ksieze5)), NodeName.KSIEZE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze5)), NodeName.KSIEZE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone zach. 2, 3, 4, 5, 33
@@ -785,21 +786,21 @@ public class MpkSynchro {
         System.out.println("warunek 62");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_3, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Leśnicy 3, 10
 
         System.out.println("warunek 63");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.LESNICA, 6);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.LESNICA, 6);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone zach. 2, 3, 4, 5, 10, 33
@@ -807,9 +808,9 @@ public class MpkSynchro {
         System.out.println("warunek 64");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_3, LineName.BISKUPIN_4, LineName.KSIEZE_5, LineName.BISKUPIN_10, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Biskupin 2, 4, 10
@@ -817,33 +818,33 @@ public class MpkSynchro {
         System.out.println("warunek 65");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.BISKUPIN_4, LineName.BISKUPIN_10, NodeName.BISKUPIN, 3);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Leśnicy 3, 20
 
         System.out.println("warunek 66");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.LESNICA, 6);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.LESNICA, 6);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Leśnicy 3, 10, 20
 
         System.out.println("warunek 67");
 
-        step = TrzyLinieBezOdchylek.execute(mix3ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10), useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.LESNICA);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = TrzyLinieBezOdchylek.execute(Operation.mix3ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin10), Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.LESNICA);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od Pilczyc w stornę JPII 3, 10, 20, 33
@@ -851,9 +852,9 @@ public class MpkSynchro {
         System.out.println("warunek 68");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.SEPOLNO_33, NodeName.JPII, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców od Arkad do Hallera 2, 14, 20
@@ -861,21 +862,21 @@ public class MpkSynchro {
         System.out.println("warunek 69");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Hallera od Powstańców do FATu 14, 20
 
         System.out.println("warunek 70");
 
-        step = DwieLinieDwieOdchylkiWYmuszone.exectue(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, fat14), useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.FAT);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieDwieOdchylkiWYmuszone.exectue(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, fat14), Operation.useOnlyAvaliableLineVariants(availableLineVariants, oporow20)), NodeName.FAT);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy na Oporów
@@ -883,21 +884,21 @@ public class MpkSynchro {
         System.out.println("warunek 71");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.OPOROW_4, LineName.OPOROW_5, LineName.OPOROW_20, NodeName.OPOROW, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od Pilczyc do JPII 3, 31
 
         System.out.println("warunek 72");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.JPII, 2);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.JPII, 2);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od Pilczyc do JPII 3, 10, 20, 31, 33
@@ -905,9 +906,9 @@ public class MpkSynchro {
         System.out.println("warunek 73");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.GAJ_31, LineName.SEPOLNO_33, NodeName.JPII, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od JPII do pl. Legionów 24, 31
@@ -915,9 +916,9 @@ public class MpkSynchro {
         System.out.println("warunek 74");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_24, LineName.GAJ_31, NodeName.JPII, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od pl. Legionów do Dworca 5, 11, 31
@@ -925,33 +926,33 @@ public class MpkSynchro {
         System.out.println("warunek 75");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.GAJ_31, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od Pilczyc do JPII 3, 32
 
         System.out.println("warunek 76");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), useOnlyAvaliableLineVariants(availableLineVariants, gaj32)), NodeName.JPII, 2);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, ksieze3), Operation.useOnlyAvaliableLineVariants(availableLineVariants, gaj32)), NodeName.JPII, 2);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy do Gaju 31, 32
 
         System.out.println("warunek 77");
 
-        step = DwieLinieBezOdchylek.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, gaj31), useOnlyAvaliableLineVariants(availableLineVariants, gaj32)), NodeName.GAJ);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieBezOdchylek.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, gaj31), Operation.useOnlyAvaliableLineVariants(availableLineVariants, gaj32)), NodeName.GAJ);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od Pilczyc do JPII 3, 10, 20, 31, 32, 33
@@ -959,9 +960,9 @@ public class MpkSynchro {
         System.out.println("warunek 78");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.GAJ_31, LineName.GAJ_32, LineName.SEPOLNO_33, NodeName.JPII, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od JPII do pl. Legionów 24, 31, 32
@@ -969,9 +970,9 @@ public class MpkSynchro {
         System.out.println("warunek 79");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_24, LineName.GAJ_31, LineName.GAJ_32, NodeName.JPII, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od pl. Legionów do Dworca 5, 11, 31, 32
@@ -979,21 +980,21 @@ public class MpkSynchro {
         System.out.println("warunek 80");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Kromera 6, 11
 
         System.out.println("warunek 81");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11)), NodeName.KROMERA, 5);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11)), NodeName.KROMERA, 5);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców od Arkad do Hallera 2, 6, 14, 20
@@ -1001,21 +1002,21 @@ public class MpkSynchro {
         System.out.println("warunek 82");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku od Arkad do Hallera 6, 7
 
         System.out.println("warunek 83");
 
-        step = DwieLinieJednaOdchylkaWymuszona.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, klecina7)), NodeName.ARKADY);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieJednaOdchylkaWymuszona.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, klecina7)), NodeName.ARKADY);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców od Arkad do Hallera 2, 6, 7, 14, 20
@@ -1023,21 +1024,21 @@ public class MpkSynchro {
         System.out.println("warunek 84");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.OPOROW_20, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców w kierunku od Arkad do Hallera 2, 17
 
         System.out.println("warunek 85");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki2), useOnlyAvaliableLineVariants(availableLineVariants, klecina17)), NodeName.ARKADY, 2);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, krzyki2), Operation.useOnlyAvaliableLineVariants(availableLineVariants, klecina17)), NodeName.ARKADY, 2);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców od Arkad do Hallera 2, 6, 7, 14, 17, 20
@@ -1045,9 +1046,9 @@ public class MpkSynchro {
         System.out.println("warunek 86");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.KLECINA_17, LineName.OPOROW_20, NodeName.ARKADY, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Powstańców od Arkad do Hallera 2, 6, 7, 14, 17, 20
@@ -1055,9 +1056,9 @@ public class MpkSynchro {
         System.out.println("warunek 87");
 
         mix = SzescLiniiMaxOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.KRZYKI_6, LineName.KLECINA_7, LineName.FAT_14, LineName.KLECINA_17, LineName.OPOROW_20, NodeName.ARKADY, 5);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Bema do Galerii Dominikańskiej 11, 17
@@ -1065,21 +1066,21 @@ public class MpkSynchro {
         System.out.println("warunek 88");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Sępolna 9, 17
 
         System.out.println("warunek 89");
 
-        step = DwieLinieDwieOdchylkiWYmuszone.exectue(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, park9), useOnlyAvaliableLineVariants(availableLineVariants, klecina17)), NodeName.SEPOLNO);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieDwieOdchylkiWYmuszone.exectue(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, park9), Operation.useOnlyAvaliableLineVariants(availableLineVariants, klecina17)), NodeName.SEPOLNO);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Bema do Galerii Dominikańskiej 9, 11, 17
@@ -1087,9 +1088,9 @@ public class MpkSynchro {
         System.out.println("warunek 90");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w kierunku płd (Skargi, Kołłątaja) 2, 5, 9, 11
@@ -1097,45 +1098,45 @@ public class MpkSynchro {
         System.out.println("warunek 91");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Poświętnego 1, 7
 
         System.out.println("warunek 92");
 
-        step = DwieLinieDwieOdchylkiWYmuszone.exectue(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin1), useOnlyAvaliableLineVariants(availableLineVariants, klecina7)), NodeName.POSWIETNE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieDwieOdchylkiWYmuszone.exectue(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin1), Operation.useOnlyAvaliableLineVariants(availableLineVariants, klecina7)), NodeName.POSWIETNE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////// przyjazdy do Biskupina 1, 2, 4, 10
 
         System.out.println("warunek 93");
 
-        step = CzteryLinieJednaOdchylkaWymuszona.execute(mix4ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, biskupin1), useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.BISKUPIN);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = CzteryLinieJednaOdchylkaWymuszona.execute(Operation.mix4ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin1), Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin2), Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin4), Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin10)), NodeName.BISKUPIN);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////// odjazdy z Sępolna 9, 33
 
         System.out.println("warunek 94");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, park9), useOnlyAvaliableLineVariants(availableLineVariants, pilczyce33)), NodeName.SEPOLNO, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, park9), Operation.useOnlyAvaliableLineVariants(availableLineVariants, pilczyce33)), NodeName.SEPOLNO, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w strone Dworca i Rynku 2, 3, 4, 5, 10, 33
@@ -1143,9 +1144,9 @@ public class MpkSynchro {
         System.out.println("warunek 95");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.LESNICA_3, LineName.OPOROW_4, LineName.OPOROW_5, LineName.LESNICA_10, LineName.PILCZYCE_33, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 3, 10, 20, 31, 32, 33
@@ -1153,9 +1154,9 @@ public class MpkSynchro {
         System.out.println("warunek 96");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 3, 10, 20, 31, 32, 33
@@ -1163,21 +1164,21 @@ public class MpkSynchro {
         System.out.println("warunek 97");
 
         mix = SzescLiniiMaxOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////// przyjazdy do Parku Płd. 9, 15
 
         System.out.println("warunek 98");
 
-        step = DwieLinieDwieOdchylki.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, park9), useOnlyAvaliableLineVariants(availableLineVariants, park15)), NodeName.PARK);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieDwieOdchylki.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, park9), Operation.useOnlyAvaliableLineVariants(availableLineVariants, park15)), NodeName.PARK);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od pl. Legionów do Dworca 5, 11, 15, 31, 32
@@ -1185,9 +1186,9 @@ public class MpkSynchro {
         System.out.println("warunek 99");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.PARK_15, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Staszica w kierunku pd. 14, 15, 24
@@ -1195,9 +1196,9 @@ public class MpkSynchro {
         System.out.println("warunek 100");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Staszica w kierunku pd. 14, 15
@@ -1205,9 +1206,9 @@ public class MpkSynchro {
         System.out.println("warunek 101");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.FAT_14, LineName.PARK_15, NodeName.STASZICA, 3);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Poświętnego 1, 7, 15
@@ -1215,33 +1216,33 @@ public class MpkSynchro {
         System.out.println("warunek 102");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_1, LineName.KLECINA_7, LineName.PARK_15, NodeName.POSWIETNE, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Kromera 6, 23
 
         System.out.println("warunek 103");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, wpp23)), NodeName.KROMERA, 5);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, wpp23)), NodeName.KROMERA, 5);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// odjazdy z Kromera 6, 11, 23
 
         System.out.println("warunek 104");
 
-        step = TrzyLinieDwieOdchylki.execute(mix3ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11), useOnlyAvaliableLineVariants(availableLineVariants, wpp23)), NodeName.KROMERA);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = TrzyLinieDwieOdchylki.execute(Operation.mix3ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, krzyki6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, grabiszynska_cm11), Operation.useOnlyAvaliableLineVariants(availableLineVariants, wpp23)), NodeName.KROMERA);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Bema do Galerii Dominikańskiej 9, 11, 17, 23
@@ -1249,9 +1250,9 @@ public class MpkSynchro {
         System.out.println("warunek 105");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, LineName.WPP_23, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Kazimierza Wlk. w stronę zach 3, 4, 10, 23, 33
@@ -1259,9 +1260,9 @@ public class MpkSynchro {
         System.out.println("warunek 106");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.OPOROW_4, LineName.LESNICA_10, LineName.WPP_23, LineName.PILCZYCE_33, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od JPII w stronę Pilczyc 3, 10, 20, 23, 31, 32, 33
@@ -1269,33 +1270,33 @@ public class MpkSynchro {
         System.out.println("warunek 107");
 
         mix = SiedemLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.LESNICA_3, LineName.LESNICA_10, LineName.LESNICA_20, LineName.WPP_23, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, LineName.PILCZYCE_33, NodeName.JPII, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy do Kromera 6, 23
 
         System.out.println("warunek 108");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kowale6), useOnlyAvaliableLineVariants(availableLineVariants, kromera23)), NodeName.KROMERA, 5);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, kowale6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kromera23)), NodeName.KROMERA, 5);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// przyjazdy do Kromera 6, 11, 23
 
         System.out.println("warunek 109");
 
-        step = TrzyLinieJednaOdchylka.execute(mix3ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, kowale6), useOnlyAvaliableLineVariants(availableLineVariants, kromera11), useOnlyAvaliableLineVariants(availableLineVariants, kromera23)), NodeName.KROMERA);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = TrzyLinieJednaOdchylka.execute(Operation.mix3ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, kowale6), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kromera11), Operation.useOnlyAvaliableLineVariants(availableLineVariants, kromera23)), NodeName.KROMERA);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej do Bema 9, 11, 17, 23
@@ -1303,9 +1304,9 @@ public class MpkSynchro {
         System.out.println("warunek 110");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, LineName.KROMERA_23, NodeName.DOMINIKANSKA, 3);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Kazimierza Wlk. w stronę wsch 3, 4, 10, 23, 33
@@ -1313,9 +1314,9 @@ public class MpkSynchro {
         System.out.println("warunek 111");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_5, LineName.BISKUPIN_4, LineName.BISKUPIN_10, LineName.KROMERA_23, LineName.SEPOLNO_33, NodeName.DOMINIKANSKA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Legnicka od Strzegosmkiego w stronę JPII 3, 10, 20, 23, 31, 32, 33
@@ -1323,21 +1324,21 @@ public class MpkSynchro {
         System.out.println("warunek 112");
 
         mix = SiedemLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KSIEZE_3, LineName.BISKUPIN_10, LineName.OPOROW_20, LineName.KROMERA_23, LineName.GAJ_31, LineName.GAJ_32, LineName.SEPOLNO_33, NodeName.JPII, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Tarnogaju i Gaju w stronę Dworca 8, 31
 
         System.out.println("warunek 113");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, karlowice8), useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.AUTOBUSOWY, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, karlowice8), Operation.useOnlyAvaliableLineVariants(availableLineVariants, st_wroclaw31)), NodeName.AUTOBUSOWY, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Tarnogaju i Gaju w stronę Dworca 8, 31, 32
@@ -1345,9 +1346,9 @@ public class MpkSynchro {
         System.out.println("warunek 114");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KARLOWICE_8, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.AUTOBUSOWY, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Dworca w stronę Galerii Dominikańskiej 2, 5, 8, 9, 11
@@ -1355,9 +1356,9 @@ public class MpkSynchro {
         System.out.println("warunek 115");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_2, LineName.KSIEZE_5, LineName.KARLOWICE_8, LineName.SEPOLNO_9, LineName.KROMERA_11, NodeName.GLOWNY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej do Bema 8, 9, 11, 17, 23
@@ -1365,9 +1366,9 @@ public class MpkSynchro {
         System.out.println("warunek 116");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KARLOWICE_8, LineName.SEPOLNO_9, LineName.KROMERA_11, LineName.SEPOLNO_17, LineName.KROMERA_23, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// z Bema do Nowowiejskie 6, 8, 11, 23
@@ -1375,9 +1376,9 @@ public class MpkSynchro {
         System.out.println("warunek 117");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KOWALE_6, LineName.KARLOWICE_8, LineName.KROMERA_11, LineName.KROMERA_23, NodeName.BEMA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Trzebnicka w kierunku pn. 1, 7, 8
@@ -1385,21 +1386,21 @@ public class MpkSynchro {
         System.out.println("warunek 118");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.POSWIETNE_1, LineName.POSWIETNE_7, LineName.KARLOWICE_8, NodeName.NADODRZE, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Dworca do Tarnogaju i Gaju 8, 31
 
         System.out.println("warunek 119");
 
-        step = DwieLinieMinOdstep.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, tarnogaj8), useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.AUTOBUSOWY, 4);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieMinOdstep.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, tarnogaj8), Operation.useOnlyAvaliableLineVariants(availableLineVariants, gaj31)), NodeName.AUTOBUSOWY, 4);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Dworca do Tarnogaju i Gaju 8, 31, 32
@@ -1407,9 +1408,9 @@ public class MpkSynchro {
         System.out.println("warunek 120");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.TARNOGAJ_8, LineName.GAJ_31, LineName.GAJ_32, NodeName.AUTOBUSOWY, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Galerii Dominikańskiej w stronę Dworca 2, 5, 8, 9, 11
@@ -1417,9 +1418,9 @@ public class MpkSynchro {
         System.out.println("warunek 121");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_2, LineName.OPOROW_5, LineName.TARNOGAJ_8, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, NodeName.GLOWNY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Odjazdy z Bema do Galerii Dominikańskiej 8, 9, 11, 17, 23
@@ -1427,9 +1428,9 @@ public class MpkSynchro {
         System.out.println("warunek 122");
 
         mix = PiecLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.TARNOGAJ_8, LineName.PARK_9, LineName.GRABISZYNSKA_CM_11, LineName.KLECINA_17, LineName.WPP_23, NodeName.DOMINIKANSKA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// z Nowowiejskiej do Bema 6, 8, 11, 23
@@ -1437,9 +1438,9 @@ public class MpkSynchro {
         System.out.println("warunek 123");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.KRZYKI_6, LineName.TARNOGAJ_8, LineName.GRABISZYNSKA_CM_11, LineName.WPP_23, NodeName.BEMA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Trzebnicka w kierunku pd. 1, 7, 8
@@ -1447,21 +1448,21 @@ public class MpkSynchro {
         System.out.println("warunek 124");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.BISKUPIN_1, LineName.KLECINA_7, LineName.TARNOGAJ_8, NodeName.NADODRZE, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////// Nowowiejska 0P i 1
 
         System.out.println("warunek 125");
 
-        step = DwieLinieJednaOdchylka.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, nadodrze0p), useOnlyAvaliableLineVariants(availableLineVariants, biskupin1)), NodeName.NADODRZE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieJednaOdchylka.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, nadodrze0p), Operation.useOnlyAvaliableLineVariants(availableLineVariants, biskupin1)), NodeName.NADODRZE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Nadodrze 0P, 1, 8
@@ -1469,9 +1470,9 @@ public class MpkSynchro {
         System.out.println("warunek 126");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.BISKUPIN_1, LineName.TARNOGAJ_8, NodeName.NADODRZE, 3);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// pl. Grunwaldzki w stronę mostu Grunwaldzkiego 0P, 4, 33
@@ -1479,9 +1480,9 @@ public class MpkSynchro {
         System.out.println("warunek 127");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OPOROW_4, LineName.PILCZYCE_33, NodeName.GRUNWALDZKI, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od Arkad do Legionów 0P, 5, 11, 15, 31, 32
@@ -1489,9 +1490,9 @@ public class MpkSynchro {
         System.out.println("warunek 128");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OPOROW_5, LineName.GRABISZYNSKA_CM_11, LineName.POSWIETNE_15, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Legionów do JPII 0P, 14, 31, 32
@@ -1499,9 +1500,9 @@ public class MpkSynchro {
         System.out.println("warunek 129");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, LineName.ST_WROCLAW_31, LineName.KOZANOW_32, NodeName.LEGIONOW, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Legionów do Sztaszica 0P, 14
@@ -1509,9 +1510,9 @@ public class MpkSynchro {
         System.out.println("warunek 130");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, NodeName.LEGIONOW, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Staszica w kierunku pn. 0P, 14, 15, 24
@@ -1519,21 +1520,21 @@ public class MpkSynchro {
         System.out.println("warunek 131");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0P, LineName.OSOBOWICE_14, LineName.POSWIETNE_15, LineName.OSOBOWICE_24, NodeName.STASZICA, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         /////////// Nowowiejska 0L i 1
 
         System.out.println("warunek 132");
 
-        step = DwieLinieDwieOdchylki.execute(mix2ListLineVariant(useOnlyAvaliableLineVariants(availableLineVariants, nadodrze0l), useOnlyAvaliableLineVariants(availableLineVariants, poswietne1)), NodeName.NADODRZE);
-        mix = mix2ListLineVariantNonEx(mix, step);
-        mix = addAllNodes(mix, availableLineVariants);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        step = DwieLinieDwieOdchylki.execute(Operation.mix2ListLineVariant(Operation.useOnlyAvaliableLineVariants(availableLineVariants, nadodrze0l), Operation.useOnlyAvaliableLineVariants(availableLineVariants, poswietne1)), NodeName.NADODRZE);
+        mix = Operation.mix2ListLineVariantNonEx(mix, step);
+        mix = Operation.addAllNodes(mix, availableLineVariants);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Nadodrze 0L, 1, 8
@@ -1541,9 +1542,9 @@ public class MpkSynchro {
         System.out.println("warunek 133");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.POSWIETNE_1, LineName.KARLOWICE_8, NodeName.NADODRZE, 2);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// most Grunwaldzki w stronę pl. Grunwaldzkiego 0L, 4, 33
@@ -1551,9 +1552,9 @@ public class MpkSynchro {
         System.out.println("warunek 134");
 
         mix = TrzyLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.BISKUPIN_4, LineName.SEPOLNO_33, NodeName.GRUNWALDZKI, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Piłsudskiego od Legionów do Arkad 0L, 5, 11, 15, 31, 32
@@ -1561,9 +1562,9 @@ public class MpkSynchro {
         System.out.println("warunek 135");
 
         mix = SzescLiniiMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.KSIEZE_5, LineName.KROMERA_11, LineName.PARK_15, LineName.GAJ_31, LineName.GAJ_32, NodeName.ARKADY, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od JPII do Legionów 0L, 24, 31, 32
@@ -1571,9 +1572,9 @@ public class MpkSynchro {
         System.out.println("warunek 136");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_24, LineName.GAJ_31, LineName.GAJ_32, NodeName.LEGIONOW, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// od Staszica do Legionów 0L, 24
@@ -1581,9 +1582,9 @@ public class MpkSynchro {
         System.out.println("warunek 137");
 
         mix = DwieLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_24, NodeName.LEGIONOW, 4);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         ///////////// Staszica w kierunku płd. 0L, 14, 15, 24
@@ -1591,10 +1592,9 @@ public class MpkSynchro {
         System.out.println("warunek 138");
 
         mix = CzteryLinieMinOdstepIstniejaceLineVarianty.execute(mix, LineName.NADODRZE_0L, LineName.FAT_14, LineName.PARK_15, LineName.FAT_24, NodeName.STASZICA, 1);
-        availableLineVariants = updateAvaliableLineVariants(availableLineVariants, mix);
+        availableLineVariants = Operation.updateAvaliableLineVariants(availableLineVariants, mix);
 
-        counter = scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
-        ;
+        counter = Operation.scopeSummary(counter, mix, millisActualTime, FILE_PATH_QUANTITY_OF_COMBINATION);
 
 
         //zapisywanie do pliku
@@ -1623,428 +1623,22 @@ public class MpkSynchro {
 //        }
 
 
-        printListLineVariant(availableLineVariants);
+        Operation.printListLineVariant(availableLineVariants);
 
 //        printListLineVariantOnlyForTerminal(mix);
-        writeFile("D:/plik_mix.csv", mix);
-        writeFile("D:/plik_availableLineVariants.csv", availableLineVariants);
+        Operation.writeFile("D:/plik_mix.csv", mix);
+        Operation.writeFile("D:/plik_availableLineVariants.csv", availableLineVariants);
 
 
     }
     // koniec metody main
 
-
-    // podsumowanie etapu
-
-    static int scopeSummary(int counter, List<LineVariant> mix, long millisActualTime, String filePath) throws IOException {
-        System.out.println("liczba kombinacji po zakończeniu etapu " + counter + ": " + mix.size());
-        counter++;
-        long executionTime = System.currentTimeMillis() - millisActualTime;
-        System.out.println(executionTime / 60000 + " min.");
-        System.out.println("----------------------\n");
-        writeFileQuantityOfCombination(filePath, Integer.toString(mix.size()));
-        return counter;
-    }
-
-
-    // metoda tworząca plik tekstowy z wynikiem
-
-    static void writeFile(String filePath, List<LineVariant> listToSave)
-            throws IOException {
-
-        FileWriter fileWriter = new FileWriter(filePath);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-        try {
-            for (LineVariant variant : listToSave) {
-                bufferedWriter.write(variant.toString());
-                bufferedWriter.newLine();
-            }
-        } finally {
-            bufferedWriter.close();
-        }
-    }
-
-
-    // metoda tworząca plik tekstowy z liczbą kombinacji
-
-    static void generateFileQuantityOfCombination(String filePath, String textToSave)
-            throws IOException {
-
-        FileWriter fileWriter = new FileWriter(filePath);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-        try {
-
-            bufferedWriter.write(textToSave);
-            bufferedWriter.newLine();
-
-        } finally {
-            bufferedWriter.close();
-        }
-    }
-
-
-    // metoda tworząca plik tekstowy z liczbą kombinacji
-
-    static void writeFileQuantityOfCombination(String filePath, String textToSave)
-            throws IOException {
-
-        FileWriter fileWriter = new FileWriter(filePath, true);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-        try {
-
-            bufferedWriter.write(textToSave);
-            bufferedWriter.newLine();
-
-        } finally {
-            bufferedWriter.close();
-        }
-    }
-
-
-    //metoda tworząca listę lineVariantów zawierających tylko dostępne lineVarianty
-
-    static List<LineVariant> useOnlyAvaliableLineVariants(List<LineVariant> avaliableListLineVariants, List<LineVariant> currentListLineVariants) {
-
-        for (int i = 0; i < currentListLineVariants.size(); i++) {
-            if (isTheSameMpkNode(currentListLineVariants.get(i).nodes.get(0), avaliableListLineVariants)) {
-
-            } else {
-                currentListLineVariants.remove(i);
-                i--;
-            }
-        }
-
-        return currentListLineVariants;
-    }
-
-
-    //metoda usuwająca z  listy lineVariantów węzły poza pierwszym
-
-    static List<LineVariant> leaveOnlyFirstNodesInListLineVariant(List<LineVariant> longListLineVariants) {
-
-
-        List<LineVariant> shortListLineVariants = new ArrayList<>();
-
-
-        for (int j = 0; j < longListLineVariants.size(); j++) {
-            LineVariant currentLineVariant = longListLineVariants.get(j);
-            LineVariant shortLineVariant = new LineVariant();
-
-            for (int i = 0; i < currentLineVariant.nodes.size(); i++) {
-                if (currentLineVariant.nodes.get(i).isFirstStop == true) {
-                    shortLineVariant.nodes.add(currentLineVariant.nodes.get(i));
-                }
-            }
-
-            shortListLineVariants.add(shortLineVariant);
-        }
-        return shortListLineVariants;
-    }
-
-
-    // metoda dopisująca wszystkie węzły do pierwszych
-
-    static List<LineVariant> addAllNodes(List<LineVariant> shortListLineVariants, List<LineVariant> avaliableLineVariants) {
-
-        List<LineVariant> longListLineVariants = new ArrayList<>();
-
-
-        for (int j = 0; j < shortListLineVariants.size(); j++) {
-
-            LineVariant currentLineVariant = shortListLineVariants.get(j);
-            LineVariant longLineVariant = new LineVariant();
-
-            for (int i = 0; i < currentLineVariant.nodes.size(); i++) {
-
-                third:
-                for (int k = 0; k < avaliableLineVariants.size(); k++) {
-                    if (currentLineVariant.nodes.get(i).equals(avaliableLineVariants.get(k).nodes.get(0))) {
-                        longLineVariant.nodes.addAll(avaliableLineVariants.get(k).nodes);
-                        break third;
-                    }
-                }
-
-
-            }
-            longListLineVariants.add(longLineVariant);
-        }
-
-        return longListLineVariants;
-    }
-
-
-    //metoda aktualizaująca listę dostępnych lineVariantów
-    static List<LineVariant> updateAvaliableLineVariants(List<LineVariant> avaliableListLineVariants, List<LineVariant> mix) {
-
-
-        for (int i = 0; i < avaliableListLineVariants.size(); i++) {
-            if (isTheSameLineName(avaliableListLineVariants.get(i).nodes.get(0).lineName, mix)) {
-
-                if (isTheSameMpkNode(avaliableListLineVariants.get(i).nodes.get(0), mix)) {
-
-                } else {
-
-                    avaliableListLineVariants.remove(i);
-                    i--;
-                }
-
-            }
-
-        }
-        return avaliableListLineVariants;
-    }
-
-
-    //metoda sprawdzająca czy na liście LineVariantów występuje LineName
-    static boolean isTheSameLineName(LineName lineName, List<LineVariant> mix) {
-
-        boolean isTheSame = false;
-
-        for (int i = 0; i < mix.size(); i++) {
-
-            for (int j = 0; j < mix.get(i).nodes.size(); j++) {
-
-                if (lineName == mix.get(i).nodes.get(j).lineName) {
-                    isTheSame = true;
-                    break;
-                }
-            }
-
-        }
-
-        return isTheSame;
-    }
-
-
-    //metoda sprawdzająca czy na liście LineVariantów występuje MpkNode
-    static boolean isTheSameMpkNode(MpkNode mpkNode, List<LineVariant> mix) {
-
-        boolean isTheSame = false;
-
-        for (int i = 0; i < mix.size(); i++) {
-
-            for (int j = 0; j < mix.get(i).nodes.size(); j++) {
-
-                if ((mpkNode.lineName == mix.get(i).nodes.get(j).lineName) && (mpkNode.nodeName == mix.get(i).nodes.get(j).nodeName) && (mpkNode.time == mix.get(i).nodes.get(j).time) && (mpkNode.isFirstStop == mix.get(i).nodes.get(j).isFirstStop)) {
-                    isTheSame = true;
-                    break;
-                }
-            }
-
-        }
-
-        return isTheSame;
-    }
-
-
-    // metoda drukująca listę wariantów dla linii
-
-    static void printListLineVariant(List<LineVariant> listToPrint) {
-        for (int i = 0; i < listToPrint.size(); i++) {
-
-            LineVariant currentLineVariant = listToPrint.get(i);
-            currentLineVariant.printLineVariant(currentLineVariant);
-            System.out.println("");
-        }
-        System.out.println("");
-    }
-
-
-    // metoda drukująca listę wariantów dla linii tylko dla odjazdów z pętli
-
-    static void printListLineVariantOnlyForTerminal(List<LineVariant> listToPrint) {
-        for (int i = 0; i < listToPrint.size(); i++) {
-
-            LineVariant currentLineVariant = listToPrint.get(i);
-            currentLineVariant.printLineVariantOnlyForTerminal(currentLineVariant);
-            System.out.println("");
-        }
-        System.out.println("");
-    }
-
-
-    // metoda tworząca listę LineVariantów dla wszystkich kombinacji - dwie linie
-
-    static List<LineVariant> mix2ListLineVariant(List<LineVariant> line1, List<LineVariant> line2) {
-
-
-        List<LineVariant> mixedListLineVariant = new ArrayList<>();
-
-        int counter = 0;
-
-        for (int j = 0; j < line1.size(); j++) {
-            LineVariant currentLineVariant1 = line1.get(j);
-
-            for (int i = 0; i < line2.size(); i++) {
-                LineVariant currentLineVariant2 = line2.get(i);
-
-                LineVariant mixedCurrentLineVariant = new LineVariant();
-
-                mixedCurrentLineVariant.nodes.addAll(currentLineVariant1.nodes);
-                mixedCurrentLineVariant.nodes.addAll(currentLineVariant2.nodes);
-
-                mixedCurrentLineVariant.removeDuplicates(mixedCurrentLineVariant);
-
-
-                mixedListLineVariant.add(mixedCurrentLineVariant);
-
-                counter++;
-
-                if (counter % 100000 == 0) {
-                    System.out.println("iteracja mix: " + counter);
-                }
-            }
-        }
-        return mixedListLineVariant;
-    }
-
-
-    // metoda tworząca listę LineVariantów dla wszystkich kombinacji z usuwaniem wykluczeń - dwie linie
-
-    static List<LineVariant> mix2ListLineVariantNonEx(List<LineVariant> line1, List<LineVariant> line2) {
-
-
-        List<LineVariant> mixedListLineVariant = new ArrayList<>();
-
-        int counter = 0;
-
-
-        line1 = leaveOnlyFirstNodesInListLineVariant(line1);
-        line2 = leaveOnlyFirstNodesInListLineVariant(line2);
-
-        for (int j = 0; j < line1.size(); j++) {
-            LineVariant currentLineVariant1 = line1.get(j);
-
-            for (int i = 0; i < line2.size(); i++) {
-                LineVariant currentLineVariant2 = line2.get(i);
-
-                LineVariant mixedCurrentLineVariant = new LineVariant();
-
-                mixedCurrentLineVariant.nodes.addAll(currentLineVariant1.nodes);
-                mixedCurrentLineVariant.nodes.addAll(currentLineVariant2.nodes);
-
-                mixedCurrentLineVariant.removeDuplicates(mixedCurrentLineVariant);
-
-
-                second:
-                for (int k = 0; k < mixedCurrentLineVariant.nodes.size() - 1; k++) {
-                    MpkNode currentNode1 = mixedCurrentLineVariant.nodes.get(k);
-
-                    for (int m = k + 1; m < mixedCurrentLineVariant.nodes.size(); m++) {
-                        MpkNode currentNode2 = mixedCurrentLineVariant.nodes.get(m);
-                        boolean isExclusive = currentNode1.exclusiveNodes(currentNode2);
-
-                        if (isExclusive) {
-                            break second;
-                        }
-                        if (k == mixedCurrentLineVariant.nodes.size() - 2) {
-                            mixedListLineVariant.add(mixedCurrentLineVariant);
-                        }
-                    }
-                }
-
-
-                counter++;
-
-                if (counter % 100000 == 0) {
-                    System.out.println("iteracja mix NON_EX: " + counter);
-                }
-            }
-        }
-        return mixedListLineVariant;
-    }
-
-
-    //metoda usuwająca duplikaty z listy LineVariantów
-
-    static List<LineVariant> removeDuplicatesInListLineVariants(List<LineVariant> list) {
-
-        List<LineVariant> currentListLineVariant = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-
-            LineVariant currentLineVariant = list.get(i);
-            currentLineVariant.removeDuplicates(currentLineVariant);
-            currentListLineVariant.add(currentLineVariant);
-        }
-
-        return currentListLineVariant;
-    }
-
-
-    // metoda tworząca listę LineVariantów dla wszystkich kombinacji - trzy linie
-
-    static List<LineVariant> mix3ListLineVariant
-            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3) {
-        List<LineVariant> mix1 = mix2ListLineVariant(line1, line2);
-        List<LineVariant> mix2 = mix2ListLineVariant(mix1, line3);
-
-        return mix2;
-    }
-
-
-    // metoda tworząca listę LineVariantów dla wszystkich kombinacji - cztery linie
-
-    static List<LineVariant> mix4ListLineVariant
-            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3, List<LineVariant> line4) {
-        List<LineVariant> mix1 = mix3ListLineVariant(line1, line2, line3);
-        List<LineVariant> mix2 = mix2ListLineVariant(mix1, line4);
-
-        return mix2;
-    }
-
-
-    // metoda tworząca listę LineVariantów dla wszystkich kombinacji - pięć linii
-
-    static List<LineVariant> mix5ListLineVariant
-            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3, List<LineVariant> line4, List<LineVariant> line5) {
-        List<LineVariant> mix1 = mix4ListLineVariant(line1, line2, line3, line4);
-        List<LineVariant> mix2 = mix2ListLineVariant(mix1, line5);
-
-        return mix2;
-    }
-
-
-    //metoda łącząca listy niewykluczających się LineVariantów
-
-
-    static List<LineVariant> nonexclusiveLineVariant(List<LineVariant> lines) {
-
-        List<LineVariant> goodLineVariants = new ArrayList<>();
-
-        for (int k = 0; k < lines.size(); k++) {
-
-            LineVariant currentLineVariant = lines.get(k);
-
-            second:
-            for (int j = 0; j < currentLineVariant.nodes.size() - 1; j++) {
-                MpkNode currentNode1 = currentLineVariant.nodes.get(j);
-
-                for (int i = j + 1; i < currentLineVariant.nodes.size(); i++) {
-                    MpkNode currentNode2 = currentLineVariant.nodes.get(i);
-                    boolean isExclusive = currentNode1.exclusiveNodes(currentNode2);
-
-                    if (isExclusive) {
-                        break second;
-                    }
-                    if (j == currentLineVariant.nodes.size() - 2) {
-                        goodLineVariants.add(lines.get(k));
-                    }
-                }
-            }
-
-            if (k % 10000 == 0) {
-                System.out.println("iteracja nonEX: " + k);
-
-            }
-        }
-        return goodLineVariants;
-    }
-
-
 }
+
+
+
+
+
+
 
 

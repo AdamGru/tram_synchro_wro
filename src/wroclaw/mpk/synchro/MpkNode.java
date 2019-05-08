@@ -5,10 +5,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class MpkNode implements Comparable<MpkNode>, Serializable {
-    LineName lineName;
-    NodeName nodeName;
+    public LineName lineName;
+    public NodeName nodeName;
     public int time;
-    boolean isFirstStop;
+    public boolean isFirstStop;
 
     public MpkNode(LineName lineName, NodeName nodeName, int time, boolean isFirstStop) {
         this.lineName = lineName;
