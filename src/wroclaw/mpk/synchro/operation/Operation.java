@@ -1,8 +1,8 @@
 package wroclaw.mpk.synchro.operation;
 
-import wroclaw.mpk.synchro.LineName;
-import wroclaw.mpk.synchro.LineVariant;
-import wroclaw.mpk.synchro.MpkNode;
+import wroclaw.mpk.synchro.structure.LineName;
+import wroclaw.mpk.synchro.structure.LineVariant;
+import wroclaw.mpk.synchro.structure.MpkNode;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -364,7 +364,7 @@ public class Operation {
 
 
     //metoda usuwająca duplikaty z listy LineVariantów
-    public static List<LineVariant> removeDuplicatesInListLineVariants(List<LineVariant> list) {
+    public static List<LineVariant> removeDuplicatesInListLineVariants(List<LineVariant> list)throws IOException {
 
         List<LineVariant> currentListLineVariant = new ArrayList<>();
 
@@ -381,7 +381,7 @@ public class Operation {
 
     // metoda tworząca listę LineVariantów dla wszystkich kombinacji - trzy linie
     public static List<LineVariant> mix3ListLineVariant
-            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3) {
+            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3)throws IOException {
         List<LineVariant> mix1 = mix2ListLineVariant(line1, line2);
         List<LineVariant> mix2 = mix2ListLineVariant(mix1, line3);
 
@@ -391,7 +391,7 @@ public class Operation {
 
     // metoda tworząca listę LineVariantów dla wszystkich kombinacji - cztery linie
     public static List<LineVariant> mix4ListLineVariant
-            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3, List<LineVariant> line4) {
+            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3, List<LineVariant> line4)throws IOException {
         List<LineVariant> mix1 = mix3ListLineVariant(line1, line2, line3);
         List<LineVariant> mix2 = mix2ListLineVariant(mix1, line4);
 
@@ -401,7 +401,7 @@ public class Operation {
 
     // metoda tworząca listę LineVariantów dla wszystkich kombinacji - pięć linii
     public static List<LineVariant> mix5ListLineVariant
-            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3, List<LineVariant> line4, List<LineVariant> line5) {
+            (List<LineVariant> line1, List<LineVariant> line2, List<LineVariant> line3, List<LineVariant> line4, List<LineVariant> line5)throws IOException {
         List<LineVariant> mix1 = mix4ListLineVariant(line1, line2, line3, line4);
         List<LineVariant> mix2 = mix2ListLineVariant(mix1, line5);
 
