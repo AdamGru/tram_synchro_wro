@@ -29,7 +29,7 @@ public class SzescLiniiMaxOdstepIstniejaceLineVarianty {
                             && ((foundnodes.get(3).time - foundnodes.get(2).time) <= gap)
                             && ((foundnodes.get(4).time - foundnodes.get(3).time) <= gap)
                             && ((foundnodes.get(5).time - foundnodes.get(4).time) <= gap)
-                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(5).time) >= gap)
+                            && ((foundnodes.get(0).time + Period.TAKT - foundnodes.get(5).time) <= gap)
             ) {
                 goodLineVariants.add(currentLineVariant);
             }
